@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "BioscoopService/1.0.0": {
+        "runtime": {
+          "BioscoopService.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BioscoopService/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

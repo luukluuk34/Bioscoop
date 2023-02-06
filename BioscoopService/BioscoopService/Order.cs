@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.IO.Enumeration;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace BioscoopService
@@ -40,7 +43,7 @@ namespace BioscoopService
                 ticketCounter++;
                 if (this.isStudentOrder && ticketCounter == 2 || m.screening.dateAndTime.DayOfWeek == DayOfWeek.Monday && ticketCounter == 2 || m.screening.dateAndTime.DayOfWeek == DayOfWeek.Tuesday && ticketCounter == 2 || m.screening.dateAndTime.DayOfWeek == DayOfWeek.Wednesday && ticketCounter == 2 || m.screening.dateAndTime.DayOfWeek == DayOfWeek.Thursday && ticketCounter == 2)
                 {
-                    ticketCounter= 0;
+                    ticketCounter = 0;
                 }
                 else
                 {
@@ -55,37 +58,67 @@ namespace BioscoopService
                     else
                     {
                         totalPrice += m.getPrice();
-                    }   
+                    }
                 }
                 dateAndTime = m.screening.dateAndTime;
             }
 
             if ((!this.isStudentOrder) && dateAndTime.DayOfWeek == DayOfWeek.Friday || (!this.isStudentOrder) && dateAndTime.DayOfWeek == DayOfWeek.Saturday || (!this.isStudentOrder) && dateAndTime.DayOfWeek == DayOfWeek.Sunday)
             {
-                totalPrice -= (totalPrice / 100) * 10; 
+                totalPrice -= (totalPrice / 100) * 10;
             }
             return totalPrice;
         }
 
         public void Export(TicketExportFormat export)
         {
-            string fileName = orderNr.ToString();
-            if (File.Exists(fileName))
+            string fileName = orderNr.ToString() + ".";
+            if (export == TicketExportFormat.PLAINTEXT)
             {
-                File.Delete(fileName);
+                fileName = fileName + "txt";
+            }
+            else if(export == TicketExportFormat.JSON)
+            {
+                fileName = fileName + ".json";
             }
 
-            using (FileStream fs = File.Create(fileName))
+            try
             {
+                if (File.Exists(fileName))
+                {
+                    File.Delete(fileName);
+                }
 
+                using (StreamWriter sw = File.CreateText(fileName))
+                {
+                    foreach (MovieTicket mt in this.tickets)
+                    {
+
+                        if(export == TicketExportFormat.PLAINTEXT)
+                        {
+                            sw.WriteLine(mt.ToString());
+                        }else if(export == TicketExportFormat.JSON)
+                        {
+                            string jsonMovie = JsonSerializer.Serialize(mt);
+                            sw.WriteLine(jsonMovie);   
+                        }
+
+                    }
+                }
+
+                using (StreamReader sr = File.OpenText(fileName))
+                {
+                    string s = "";
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        Console.WriteLine(s);
+                    }
+                }
             }
-
-
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
         }
-
-
-
-
-
     }
 }
