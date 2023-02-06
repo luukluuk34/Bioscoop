@@ -44,6 +44,7 @@ namespace BioscoopService
                 if (this.isStudentOrder && ticketCounter == 2 || m.screening.dateAndTime.DayOfWeek == DayOfWeek.Monday && ticketCounter == 2 || m.screening.dateAndTime.DayOfWeek == DayOfWeek.Tuesday && ticketCounter == 2 || m.screening.dateAndTime.DayOfWeek == DayOfWeek.Wednesday && ticketCounter == 2 || m.screening.dateAndTime.DayOfWeek == DayOfWeek.Thursday && ticketCounter == 2)
                 {
                     ticketCounter = 0;
+                    Console.WriteLine(totalPrice);
                 }
                 else
                 {
@@ -63,8 +64,11 @@ namespace BioscoopService
                 dateAndTime = m.screening.dateAndTime;
             }
 
-            if ((!this.isStudentOrder) && dateAndTime.DayOfWeek == DayOfWeek.Friday || (!this.isStudentOrder) && dateAndTime.DayOfWeek == DayOfWeek.Saturday || (!this.isStudentOrder) && dateAndTime.DayOfWeek == DayOfWeek.Sunday)
+            Console.WriteLine(totalPrice);
+
+            if ((!this.isStudentOrder) && dateAndTime.DayOfWeek == DayOfWeek.Friday && tickets.Count >= 6 || (!this.isStudentOrder) && dateAndTime.DayOfWeek == DayOfWeek.Saturday && tickets.Count >= 6 || (!this.isStudentOrder) && dateAndTime.DayOfWeek == DayOfWeek.Sunday && tickets.Count >= 6)
             {
+                
                 totalPrice -= (totalPrice / 100) * 10;
             }
             return totalPrice;
@@ -72,14 +76,14 @@ namespace BioscoopService
 
         public void Export(TicketExportFormat export)
         {
-            string fileName = orderNr.ToString() + ".";
+            string fileName = "C:\\Temp\\" +  orderNr.ToString() + ".";
             if (export == TicketExportFormat.PLAINTEXT)
             {
                 fileName = fileName + "txt";
             }
             else if(export == TicketExportFormat.JSON)
             {
-                fileName = fileName + ".json";
+                fileName = fileName + "json";
             }
 
             try
@@ -96,6 +100,7 @@ namespace BioscoopService
 
                         if(export == TicketExportFormat.PLAINTEXT)
                         {
+                            Console.WriteLine("test");
                             sw.WriteLine(mt.ToString());
                         }else if(export == TicketExportFormat.JSON)
                         {
