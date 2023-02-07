@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\School\\Avans\\Jaar3\\Bioscoop\\BioscoopService\\BioscoopService\\BioscoopService.csproj": {}
+    "C:\\School\\Leerjaar_3\\Periode_3\\SOFA3\\Huiswerk\\BioscoopService\\BioscoopService\\BioscoopService.csproj": {}
   },
   "projects": {
-    "D:\\School\\Avans\\Jaar3\\Bioscoop\\BioscoopService\\BioscoopService\\BioscoopService.csproj": {
+    "C:\\School\\Leerjaar_3\\Periode_3\\SOFA3\\Huiswerk\\BioscoopService\\BioscoopService\\BioscoopService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\School\\Avans\\Jaar3\\Bioscoop\\BioscoopService\\BioscoopService\\BioscoopService.csproj",
+        "projectUniqueName": "C:\\School\\Leerjaar_3\\Periode_3\\SOFA3\\Huiswerk\\BioscoopService\\BioscoopService\\BioscoopService.csproj",
         "projectName": "BioscoopService",
-        "projectPath": "D:\\School\\Avans\\Jaar3\\Bioscoop\\BioscoopService\\BioscoopService\\BioscoopService.csproj",
-        "packagesPath": "C:\\Users\\Maurice\\.nuget\\packages\\",
-        "outputPath": "D:\\School\\Avans\\Jaar3\\Bioscoop\\BioscoopService\\BioscoopService\\obj\\",
+        "projectPath": "C:\\School\\Leerjaar_3\\Periode_3\\SOFA3\\Huiswerk\\BioscoopService\\BioscoopService\\BioscoopService.csproj",
+        "packagesPath": "C:\\Users\\luuk-\\.nuget\\packages\\",
+        "outputPath": "C:\\School\\Leerjaar_3\\Periode_3\\SOFA3\\Huiswerk\\BioscoopService\\BioscoopService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Maurice\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\luuk-\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -45,11 +45,17 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
