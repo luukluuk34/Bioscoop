@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\luuk-\\.nuget\\packages\\": {}
+    "C:\\Users\\Maurice\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\School\\Leerjaar_3\\Periode_3\\SOFA3\\Huiswerk\\BioscoopService\\BioscoopService\\BioscoopService.csproj",
+      "projectUniqueName": "D:\\School\\Avans\\Jaar3\\Bioscoop\\BioscoopService\\BioscoopService\\BioscoopService.csproj",
       "projectName": "BioscoopService",
-      "projectPath": "C:\\School\\Leerjaar_3\\Periode_3\\SOFA3\\Huiswerk\\BioscoopService\\BioscoopService\\BioscoopService.csproj",
-      "packagesPath": "C:\\Users\\luuk-\\.nuget\\packages\\",
-      "outputPath": "C:\\School\\Leerjaar_3\\Periode_3\\SOFA3\\Huiswerk\\BioscoopService\\BioscoopService\\obj\\",
+      "projectPath": "D:\\School\\Avans\\Jaar3\\Bioscoop\\BioscoopService\\BioscoopService\\BioscoopService.csproj",
+      "packagesPath": "C:\\Users\\Maurice\\.nuget\\packages\\",
+      "outputPath": "D:\\School\\Avans\\Jaar3\\Bioscoop\\BioscoopService\\BioscoopService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\luuk-\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Maurice\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -51,17 +51,11 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "frameworkReferences": {
-          "Microsoft.NETCore.App": {
-            "privateAssets": "all"
-          }
-        },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   }
