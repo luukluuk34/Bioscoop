@@ -41,7 +41,7 @@ namespace BioscoopService
             foreach (MovieTicket m in this.tickets)
             {
                 ticketCounter++;
-                if (this.isStudentOrder && ticketCounter == 2 || m.screening.dateAndTime.DayOfWeek == DayOfWeek.Monday && ticketCounter == 2 || m.screening.dateAndTime.DayOfWeek == DayOfWeek.Tuesday && ticketCounter == 2 || m.screening.dateAndTime.DayOfWeek == DayOfWeek.Wednesday && ticketCounter == 2 || m.screening.dateAndTime.DayOfWeek == DayOfWeek.Thursday && ticketCounter == 2)
+                if (this.isStudentOrder && ticketCounter == 2 || (int) m.screening.dateAndTime.DayOfWeek < 6 && ticketCounter == 2 || (int) m.screening.dateAndTime.DayOfWeek != 0 && ticketCounter == 2)
                 {
                     ticketCounter = 0;
                     Console.WriteLine(totalPrice);
@@ -66,7 +66,7 @@ namespace BioscoopService
 
             Console.WriteLine(totalPrice);
 
-            if ((!this.isStudentOrder) && dateAndTime.DayOfWeek == DayOfWeek.Friday && tickets.Count >= 6 || (!this.isStudentOrder) && dateAndTime.DayOfWeek == DayOfWeek.Saturday && tickets.Count >= 6 || (!this.isStudentOrder) && dateAndTime.DayOfWeek == DayOfWeek.Sunday && tickets.Count >= 6)
+            if ((!this.isStudentOrder) && (int)dateAndTime.DayOfWeek >= 6 && tickets.Count >= 6 || (!this.isStudentOrder) && (int)dateAndTime.DayOfWeek == 0 && tickets.Count >= 6)
             {
                 
                 totalPrice -= (totalPrice / 100) * 10;

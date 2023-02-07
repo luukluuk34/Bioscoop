@@ -27,4 +27,6 @@ Console.WriteLine(order.calculatePrice());
 
 order.Export(TicketExportFormat.PLAINTEXT);
 
+Console.WriteLine((int)DateTime.Now.AddDays(5).DayOfWeek);
+
 
