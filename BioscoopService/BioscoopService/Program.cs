@@ -14,7 +14,9 @@ MovieTicket ticketVier = new MovieTicket(screening, true, 2, 5);
 MovieTicket ticketVijf = new MovieTicket(screening, true, 2, 6);
 MovieTicket ticketZes = new MovieTicket(screening, true, 2, 7);
 
-Order order = new Order(1,false);
+ICalculatingStrategy regStrat = new RegularCalculatingStrategy();
+
+Order order = new Order(1, regStrat);
 
 order.addSeatReservation(ticketEen);
 order.addSeatReservation(ticketTwee);
@@ -25,7 +27,7 @@ order.addSeatReservation(ticketZes);
 
 Console.WriteLine(order.calculatePrice());
 
-order.Export(TicketExportFormat.PLAINTEXT);
+//order.Export(TicketExportFormat.PLAINTEXT);
 
 Console.WriteLine((int)DateTime.Now.AddDays(5).DayOfWeek);
 

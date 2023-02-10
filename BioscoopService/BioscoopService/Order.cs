@@ -12,71 +12,35 @@ namespace BioscoopService
 {
     public class Order
     {
-        private int orderNr;
-        private bool isStudentOrder;
-        private List<MovieTicket> tickets = new List<MovieTicket>();
+        private int _orderNr;
+        private bool _isStudentOrder;
+        private ICalculatingStrategy _calculatingStrategy;
+        private List<MovieTicket> _tickets = new List<MovieTicket>();
 
-        public Order(int orderNr, bool isStudentOrder)
+        public Order(int orderNr, ICalculatingStrategy calculatingStrategy)
         {
-            this.orderNr = orderNr;
-            this.isStudentOrder = isStudentOrder;
+            this._orderNr = orderNr;
+            this._calculatingStrategy = calculatingStrategy;
         }
 
         public int getOrderNr()
         {
-            return orderNr;
+            return _orderNr;
         }
 
         public void addSeatReservation(MovieTicket ticket)
         {
-            tickets.Add(ticket);
+            _tickets.Add(ticket);
         }
 
         public double calculatePrice()
         {
-            double totalPrice = 0;
-            int ticketCounter = 0;
-            DateTime dateAndTime = DateTime.Now;
-
-            foreach (MovieTicket m in this.tickets)
-            {
-                ticketCounter++;
-                if (this.isStudentOrder && ticketCounter == 2 || (int) m.screening.dateAndTime.DayOfWeek < 6 && ticketCounter == 2 || (int) m.screening.dateAndTime.DayOfWeek != 0 && ticketCounter == 2)
-                {
-                    ticketCounter = 0;
-                    Console.WriteLine(totalPrice);
-                }
-                else
-                {
-                    if (this.isStudentOrder && m.isPremiumTicket())
-                    {
-                        totalPrice += (m.getPrice() + 2);
-                    }
-                    else if (m.isPremiumTicket())
-                    {
-                        totalPrice += (m.getPrice() + 3);
-                    }
-                    else
-                    {
-                        totalPrice += m.getPrice();
-                    }
-                }
-                dateAndTime = m.screening.dateAndTime;
-            }
-
-            Console.WriteLine(totalPrice);
-
-            if ((!this.isStudentOrder) && (int)dateAndTime.DayOfWeek >= 6 && tickets.Count >= 6 || (!this.isStudentOrder) && (int)dateAndTime.DayOfWeek == 0 && tickets.Count >= 6)
-            {
-                
-                totalPrice -= (totalPrice / 100) * 10;
-            }
-            return totalPrice;
+            this._calculatingStrategy.calculatePrice();
         }
 
         public void Export(TicketExportFormat export)
         {
-            string fileName = "C:\\Temp\\" +  orderNr.ToString() + ".";
+            string fileName = "C:\\Temp\\" +  _orderNr.ToString() + ".";
             if (export == TicketExportFormat.PLAINTEXT)
             {
                 fileName = fileName + "txt";
@@ -95,7 +59,7 @@ namespace BioscoopService
 
                 using (StreamWriter sw = File.CreateText(fileName))
                 {
-                    foreach (MovieTicket mt in this.tickets)
+                    foreach (MovieTicket mt in this._tickets)
                     {
 
                         if(export == TicketExportFormat.PLAINTEXT)
