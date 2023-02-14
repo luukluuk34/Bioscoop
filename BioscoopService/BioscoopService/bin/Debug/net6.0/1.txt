@@ -1,6 +1,0 @@
-BioscoopService.MovieTicket
-BioscoopService.MovieTicket
-BioscoopService.MovieTicket
-BioscoopService.MovieTicket
-BioscoopService.MovieTicket
-BioscoopService.MovieTicket
