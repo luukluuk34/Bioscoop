@@ -11,29 +11,29 @@ namespace BioscoopService
         private double _totalPrice = 0;
         private int _ticketCounter = 0;
         private DateTime _dateAndTime = DateTime.Now;
-        public double calculatePrice()
+        public double calculatePrice(List<MovieTicket> _tickets)
         {
             Console.WriteLine(this._totalPrice);
 
-            this.calculateTickets();
+            this.calculateTickets(_tickets);
 
-            this.checkIfWeekend();
+            this.checkIfWeekend(_tickets);
 
             return this._totalPrice;
         }
 
-        private void calculateTickets()
+        private void calculateTickets(List<MovieTicket> _tickets)
         {
-            foreach (MovieTicket m in this._tickets)
+            foreach (MovieTicket m in _tickets)
             {
                 this._ticketCounter++;
 
-                this.calculateTicket();
+                this.calculateTicket(m);
             }
         }
-        private void calculateTicket()
+        private void calculateTicket(MovieTicket m)
         {
-            if (this.checkTicket())
+            if (this.checkTicket(m))
             {
                 this._ticketCounter = 0;
                 Console.WriteLine(this._totalPrice);
@@ -52,11 +52,11 @@ namespace BioscoopService
 
             this._dateAndTime = m.screening.dateAndTime;
         }
-        private boolean checkTicket()
+        private bool checkTicket(MovieTicket m)
         {
             return (this._ticketCounter == 2 && ((int)m.screening.dateAndTime.DayOfWeek < 6 || (int)m.screening.dateAndTime.DayOfWeek != 0) ) ? true : false;
         }
-        private void checkIfWeekend()
+        private void checkIfWeekend(List<MovieTicket> _tickets)
         {
 
             if ((int)this._dateAndTime.DayOfWeek >= 6 && _tickets.Count >= 6 || (int)this._dateAndTime.DayOfWeek == 0 && _tickets.Count >= 6)

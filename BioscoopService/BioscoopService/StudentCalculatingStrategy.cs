@@ -8,29 +8,25 @@ namespace BioscoopService
 {
     class StudentCalculatingStrategy : ICalculatingStrategy
     {
-        public double calculatePrice()
+        public double calculatePrice(List<MovieTicket> _tickets)
         {
             double totalPrice = 0;
             int ticketCounter = 0;
             DateTime dateAndTime = DateTime.Now;
 
-            foreach (MovieTicket m in this._tickets)
+            foreach (MovieTicket m in _tickets)
             {
                 ticketCounter++;
-                if (this._isStudentOrder && ticketCounter == 2 || (int)m.screening.dateAndTime.DayOfWeek < 6 && ticketCounter == 2 || (int)m.screening.dateAndTime.DayOfWeek != 0 && ticketCounter == 2)
+                if (ticketCounter == 2 || (int)m.screening.dateAndTime.DayOfWeek < 6 && ticketCounter == 2 || (int)m.screening.dateAndTime.DayOfWeek != 0 && ticketCounter == 2)
                 {
                     ticketCounter = 0;
                     Console.WriteLine(totalPrice);
                 }
                 else
                 {
-                    if (this._isStudentOrder && m.isPremiumTicket())
+                    if (m.isPremiumTicket())
                     {
                         totalPrice += (m.getPrice() + 2);
-                    }
-                    else if (m.isPremiumTicket())
-                    {
-                        totalPrice += (m.getPrice() + 3);
                     }
                     else
                     {
@@ -42,7 +38,7 @@ namespace BioscoopService
 
             Console.WriteLine(totalPrice);
 
-            if ((!this._isStudentOrder) && (int)dateAndTime.DayOfWeek >= 6 && _tickets.Count >= 6 || (!this._isStudentOrder) && (int)dateAndTime.DayOfWeek == 0 && _tickets.Count >= 6)
+            if ((int)dateAndTime.DayOfWeek >= 6 && _tickets.Count >= 6 || ((int)dateAndTime.DayOfWeek == 0 && _tickets.Count >= 6))
             {
 
                 totalPrice -= (totalPrice / 100) * 10;

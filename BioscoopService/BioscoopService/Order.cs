@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.IO.Enumeration;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -35,7 +36,7 @@ namespace BioscoopService
 
         public double calculatePrice()
         {
-            this._calculatingStrategy.calculatePrice();
+            return this._calculatingStrategy.calculatePrice(_tickets);
         }
 
         public void Export(TicketExportFormat export)

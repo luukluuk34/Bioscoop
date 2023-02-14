@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace BioscoopService
 {
-    interface ICalculatingStrategy
+    public interface ICalculatingStrategy
     {
-        public double calculatePrice();
+        public double calculatePrice(List<MovieTicket> _tickets);
     }
 }

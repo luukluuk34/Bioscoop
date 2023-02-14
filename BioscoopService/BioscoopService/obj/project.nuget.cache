@@ -1,15 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A42TnjKCF8xqvaNGDwwU5i46i5SNP++mvi4/q+oi4OU2KEmN110EgDlLb5lJAt7GjgafNYoY9lnibRVuKHqbCw==",
+  "dgSpecHash": "JzQyeJMc40dCyLFVd13fXdPJrd1Egs7BQt+bz1SecE0UMRoXZ8BpJMlpwgAZYtWEisQaJXPT6oIfLRebwH8J3Q==",
   "success": true,
   "projectFilePath": "D:\\School\\Avans\\Jaar3\\Bioscoop\\BioscoopService\\BioscoopService\\BioscoopService.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file D:\\School\\Avans\\Jaar3\\Bioscoop\\BioscoopService\\BioscoopService\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
